@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  postgres-db:
+    image: postgres:13.0-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: x0we0ps
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  mysql-development:
+    image: mysql:8.0.22
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: x0we0ps
+      MYSQL_DATABASE: testdb
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  pgdb-data:
+  mysql-data:
